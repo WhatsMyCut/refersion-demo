@@ -1,4 +1,10 @@
-# Getting Started with Create React App
+# refersion-demo
+
+This repository is a code exercise for Refersion by Mike Taylor, Feb 22, 2021
+## Developer Notes
+
+none
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
