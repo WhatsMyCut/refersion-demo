@@ -7,7 +7,7 @@ export const WeatherIcon = (props) => {
   const { iconId } = props;
   return (
     <>
-    <img className='weather-icon' src={iconAPI + iconId + iconExt} id={iconId} alt={iconId}/>
+    <img className='weather-icon' src={iconAPI + iconId + iconExt} id={iconId} alt="icon"/>
     </>
   )
 

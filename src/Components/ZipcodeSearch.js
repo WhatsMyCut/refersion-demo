@@ -1,10 +1,10 @@
 import React from 'react';
 
 const ZipcodeSearch = (props) => {
-  const { handleZipcodeChange } = props;
+  const { defaultZipcode, handleZipcodeChange } = props;
   return (
     <div>
-      <input type="text" onChange={ handleZipcodeChange } />
+      <input type="text" onChange={ handleZipcodeChange } placeholder={defaultZipcode} />
     </div>
   )
 }

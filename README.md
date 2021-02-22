@@ -22,6 +22,8 @@ Your JS code should be well organized and logical. A bad implementation would be
 ## Developer Notes
 
 - Initial code cleanup performed using VSCode Extension (nomadjsdev.cra-tasks-after-init)
+- Includes basic Jest tests included with CRA, modified for this app.
+- `/src/Components/index.js` is used to keep 'private' and 'protected' components separate.
 ## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
