@@ -1,9 +1,10 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import App from './App';
+import { getByAltText, render } from '@testing-library/react';
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/App/i);
+import App from './App';
+import React from 'react';
+
+test('shows Icon', () => {
+  const { getByAltText } = render(<App />);
+  const linkElement = getByAltText(/10d/i);
   expect(linkElement).toBeInTheDocument();
 });

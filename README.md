@@ -1,9 +1,27 @@
 # refersion-demo
 
 This repository is a code exercise for Refersion by Mike Taylor, Feb 22, 2021
+
+## Instructions
+
+Download the design Sketch  [file:](http://cloud.refersion.com/c15a5d94bcfb) (or [PDF](http://cloud.refersion.com/c9f1b8302135/weatherapp.pdf) ).
+
+In the Sketch file, you’ll see the design along with a duplicate containing notes which detail the data that should be used from the API response. For example “name”, refers to  object.
+
+To get the current data, please use this API: [openweathermap.org](https://api.openweathermap.org/data/2.5/weather?zip=10036,us&appid=709847967f5e54b97308c1b2cae4dee5)
+
+The API also provides an icon code. The mapping is described . For example, a code “10d” would link to [this](http://openweathermap.org/img/w/10d.png) icon.
+
+Your React app should call this API upon load or when the button is clicked, be well organized (.jsx, .css, .scss files etc.), and be able to run locally with minimal effort (usually via an “npm build” command defined in a package.json file).
+
+##### You will be graded on
+
+That the design is pixel-perfect. Elements like fonts should match, margins/paddings should be identical to the Sketch design as possible.
+
+Your JS code should be well organized and logical. A bad implementation would be unnecessary nested if-statements, as an example.
 ## Developer Notes
 
-none
+- Initial code cleanup performed using VSCode Extension (nomadjsdev.cra-tasks-after-init)
 ## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
