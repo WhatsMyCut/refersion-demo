@@ -43,7 +43,7 @@ const App = () => {
       }
     }
     return false;
-  },[inputText]);
+  },[]);
 
   const getData = async (zipcode) => {
     return await(

@@ -14,17 +14,19 @@ The API also provides an icon code. The mapping is described . For example, a co
 
 Your React app should call this API upon load or when the button is clicked, be well organized (.jsx, .css, .scss files etc.), and be able to run locally with minimal effort (usually via an “npm build” command defined in a package.json file).
 
-##### You will be graded on
+### You will be graded on
 
 That the design is pixel-perfect. Elements like fonts should match, margins/paddings should be identical to the Sketch design as possible.
 
 Your JS code should be well organized and logical. A bad implementation would be unnecessary nested if-statements, as an example.
+
 ## Developer Notes
 
 - Initial code cleanup performed using VSCode Extension (nomadjsdev.cra-tasks-after-init)
 - Includes basic Jest tests included with CRA, modified for this app.
 - `/src/Components/index.js` is used to keep 'private' and 'protected' components separate.
 - While developing the calls to the API, a loop was created that overran the quota for the app. I am receiving the error `GET https://api.openweathermap.org/data/2.5/weather?zip=10036,us&appid=709847967f5e54b97308c1b2cae4dee5 429 (Too Many Requests)`
+
 ## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
