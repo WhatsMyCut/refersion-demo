@@ -21,10 +21,10 @@ const Forecast = (props) => {
       </div>
       <div className="forecast-desc">{weatherDescription}</div>
       <div className="forecast-numbers">
-        <div className="temp">{ main.temp }&deg;</div>
+        <div className="temp">{ Math.round(main.temp) }&deg;</div>
         <div className="min-max">
-          <div className="min">{ main.temp_min }&deg;</div>
-          <div className="max">{ main.temp_max }&deg;</div>
+          <div className="min">{ Math.round(main.temp_min) }&deg;</div>
+          <div className="max">{ Math.round(main.temp_max) }&deg;</div>
         </div>
       </div>
     </div>
