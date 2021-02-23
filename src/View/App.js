@@ -17,6 +17,7 @@ const App = () => {
   // eslint-disable-next-line no-unused-vars
   const [wData, setWData] = useState(defaultData)
   const [error, setError]= useState(undefined);
+  const [loaded, setLoaded] = useState(false);
 
   const handleSubmit = useCallback((evt) => {
     evt.preventDefault();
@@ -26,9 +27,10 @@ const App = () => {
       if (inputText.length < 5) {
         setError('Error: Please enter a valid zip code.');
       }
-      setZipCode(inputText);
+      if (inputText !== zipCode) setZipCode(inputText);
+      setLoaded(false);
     }
-  }, [inputText]);
+  }, [inputText, zipCode]);
 
   const handleInputChange = useCallback((evt) => {
     evt.preventDefault();
@@ -45,24 +47,30 @@ const App = () => {
     return false;
   },[]);
 
-  const getData = async (zipcode) => {
+  const getData = useCallback(async (zipcode) => {
     return await(
       fetch(weatherAPI + zipcode + weatherCreds)
+      .then(result => result.json())
       .then(result => {
-        if (result.ok) {
-          return JSON.stringify(result);
-        } else {
-          throw new Error('Network response was not ok.');
+        if (result !== wData)  {
+          setWData(result);
+          setLoaded(true);
         }
+      },
+      (error) => {
+        setLoaded(true);
+        setError(error);
       })
       .catch((e) => setError(`Error:` + e.message))
     );
-  }
+  }, [wData])
 
 
   useEffect(() => {
-    if (zipCode.length === 5) getData(zipCode);
-  }, [zipCode])
+    if (!loaded) {
+      getData(zipCode);
+    }
+  }, [zipCode, loaded, getData])
 
   return (
     <React.Fragment>
