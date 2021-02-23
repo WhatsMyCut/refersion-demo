@@ -1,10 +1,11 @@
+/* eslint-disable jsx-a11y/aria-role */
 import React from 'react';
 
 const Button = (props) => {
-  const { handleClick, buttonText } = props;
+  const { handleSubmit, buttonText } = props;
   return (
     <>
-    <input type="button" value={buttonText} onClick={handleClick} />
+    <input role="submit" type="button" value={buttonText} onClick={handleSubmit} />
     </>
   )
 

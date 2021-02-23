@@ -13,31 +13,37 @@ const buttonText = 'Update';
 
 const App = () => {
   const [zipCode, setZipCode] = useState(defaultZipcode);
-  const [inputText, setInputText] = useState('');
+  const [inputText, setInputText] = useState(defaultZipcode);
+  // eslint-disable-next-line no-unused-vars
   const [wData, setWData] = useState(defaultData)
   const [error, setError]= useState(undefined);
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = useCallback((evt) => {
     evt.preventDefault();
-    console.log('handleSubmit');
+    //console.log('handleSubmit', evt.target);
     const { target } = evt;
     if (target && target.value) {
-      setZipCode(target.value);
+      if (inputText.length < 5) {
+        setError('Error: Please enter a valid zip code.');
+      }
+      setZipCode(inputText);
     }
-  }
+  }, [inputText]);
 
-  const handleInputChange = (evt) => {
+  const handleInputChange = useCallback((evt) => {
     evt.preventDefault();
     const { target } = evt;
-    const newVal = inputText;
     if (target && target.value) {
+      if (target.value === 1003) { // handle backspace
+        setInputText(target.value);
+      }
+      // console.log('key: ', target.value)
       if (!isNaN(target.value)) {
-        setInputText(newVal);
-        return newVal;
+        setInputText(target.value);
       }
     }
     return false;
-  }
+  },[inputText]);
 
   const getData = async (zipcode) => {
     return await(
@@ -55,13 +61,8 @@ const App = () => {
 
 
   useEffect(() => {
-    getData(zipCode);
+    if (zipCode.length === 5) getData(zipCode);
   }, [zipCode])
-
-  useCallback(() => {
-    const data = getData(zipCode);
-    if (data !== wData) setWData(data);
-  },[wData, zipCode]);
 
   return (
     <React.Fragment>

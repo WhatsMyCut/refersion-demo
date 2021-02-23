@@ -16,7 +16,7 @@ export const Form = (props) => {
     <form>
     <div className="form-container">
       <div className="form-input">
-        <div className="form-input-label">Zip Code:</div>
+        <label className="form-input-label" for="zipcode-search" >Zip Code:</label>
         <ZipcodeSearch {...{inputText, defaultZipCode, handleZipcodeChange}}/>
       </div>
       <Button buttonText={buttonText} handleSubmit={handleSubmit}/>

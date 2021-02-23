@@ -1,10 +1,11 @@
+/* eslint-disable jsx-a11y/aria-role */
 import React from 'react';
 
 const ZipcodeSearch = (props) => {
   const { inputText, defaultZipcode, handleZipcodeChange } = props;
   return (
     <div className="zipcode-search">
-      <input type="text" value={inputText} onChange={ handleZipcodeChange } placeholder={defaultZipcode} />
+      <input role="input" id="zipcode-search" type="text" value={inputText} onChange={ handleZipcodeChange } placeholder={defaultZipcode} />
     </div>
   )
 }
