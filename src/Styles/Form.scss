@@ -4,6 +4,19 @@ form {
   width: 100%
 }
 
+input[type=button] {
+  width: 145px;
+  background-image: linear-gradient(#d6d6d6, #b3b3b3);
+  border-radius: 5px;
+  color: #4a4a4a;
+  font-weight: 700;
+  border: 1px solid #979797;
+  text-shadow: 0px 1px #fefefe;
+  box-shadow: 0px 1px inset #fff;
+  margin-left: 44px;
+  margin-top: 5px;
+}
+
 .form-container {
   font-family: 'Lato', sans-serif;
   display: flex;
@@ -11,6 +24,7 @@ form {
   flex-direction: row;
   justify-content: center;
   width: 100%;
+  margin: 58px auto;
 }
 
 .form-input {
@@ -20,14 +34,13 @@ form {
   width: 108px;
 }
 
+.form-input-label {
+  font-size: 14px;
+  font-weight: 100;
+}
+
 .zipcode-search {
   display: inherit;
   flex-direction: column;
 }
 
-.zipcode-search input[type=button] {
-  width: 145px;
-  padding-left: 15px;
-  width: 108px;
-  height: 36px;
-}

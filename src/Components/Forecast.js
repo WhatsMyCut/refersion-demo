@@ -10,7 +10,7 @@ const Forecast = (props) => {
   console.log('data', data);
   const name = data && data['name'] ? data['name'] : '--';
   const weather = data && data['main'] ? data['weather'] : {};
-  const weatherDescription = weather && weather['main'] ? weather['main'] : '--';
+  const weatherDescription = weather && weather[0] && weather[0]['main'] ? weather[0]['main'] : '--';
   const iconId = weather && weather.icon ? weather.icon : defaultIconId;
   // const iconId = data.icon || defaultIcon;
   return (
