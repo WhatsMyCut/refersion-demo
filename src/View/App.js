@@ -49,7 +49,7 @@ const App = () => {
           throw new Error('Network response was not ok.');
         }
       })
-      .catch((e) => setError({message: e.message}))
+      .catch((e) => setError(`Error:` + e.message))
     );
   }
 
@@ -66,7 +66,7 @@ const App = () => {
   return (
     <React.Fragment>
       <div className="app">
-        { error ? JSON.stringify(error) : '' }
+        { error && <div className="error">{ JSON.stringify(error) }</div> }
         <Forecast {...{wData, defaultZipcode, defaultIconId}}></Forecast>
         <hr/>
         <Form {...{handleSubmit, defaultZipcode, handleZipcodeChange: handleInputChange, inputText, buttonText}}></Form>
