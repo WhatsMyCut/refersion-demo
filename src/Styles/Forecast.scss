@@ -1,0 +1,30 @@
+.forecast-container {
+  display: inherit;
+  flex-direction: column;
+  align-items: center;
+}
+
+.forecast-text {
+  display: inherit;
+  flex-direction: row;
+  justify-self: center;
+  font-size: 40px;
+  font-weight: 100;
+}
+
+.forecast-numbers {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.forecast-numbers .min-max {
+  display: inherit;
+  flex-direction: row;
+}
+
+.weather-icon {
+  display: inherit;
+  width: 50px;
+  justify-self: flex-end;
+}

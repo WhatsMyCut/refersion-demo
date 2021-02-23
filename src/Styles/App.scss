@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:regular,bold,italic&subset=latin,latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:regular,bold,italic,lite&subset=latin,latin-ext');
+
+* {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+}
+
+hr {
+  line-height: 0;
+  width: 100%;
+  border: 1px solid #ccc;
+}
+
+.app {
+  margin: 15px auto;
+  width: 600px;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex: 1 1 auto;
+}

@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:regular,bold,italic,lite&subset=latin,latin-ext');
+
+form {
+  width: 100%
+}
+
+.form-container {
+  font-family: 'Lato', sans-serif;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.form-input {
+  display: inherit;
+  flex-direction: column;
+  text-align: left;
+  width: 108px;
+}
+
+.zipcode-search {
+  display: inherit;
+  flex-direction: column;
+}
+
+.zipcode-search input[type=button] {
+  width: 145px;
+  padding-left: 15px;
+  width: 108px;
+  height: 36px;
+}

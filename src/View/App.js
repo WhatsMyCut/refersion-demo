@@ -1,4 +1,6 @@
-import * as defaultData from '../weather'
+import '../Styles/App.scss';
+
+import * as defaultData from '../weather';
 
 import { Forecast, Form } from '../Components';
 import React, { useEffect, useState } from 'react';
@@ -22,33 +24,43 @@ const App = () => {
 
   const handleZipcodeChange = (evt) => {
     evt.preventDefault();
-    console.log('handleZipcodeChange');
+    const { target } = evt;
+    const newVal = zipCode
+    if (target && target.value) {
+      if (!isNaN(target.value)) {
+        setInputText(newVal);
+        return newVal;
+      }
+    }
+    return false;
   }
 
+  const getData = async () => {
+    return await(
+      fetch(weatherAPI + zipCode + weatherCreds)
+      .then(result => {
+        if (result.ok) return JSON.stringify(result);
+        throw new Error('Network response was not ok.');
+      })
+      .catch((e) => setError(e))
+    );
+  }
   useEffect(() => {
-    const getData = async () => {
-      return await(
-        fetch(weatherAPI + zipCode + weatherCreds)
-        .then(result => {
-          if (result.ok) return JSON.stringify(result);
-          throw new Error('Network response was not ok.');
-        })
-        .catch((e) => setError(e))
-      );
-    }
-
+    // getData()
     // Update the document title using the browser API
-    const data = getData();
-    console.log('received data', data);
-    if (data) setWData(data);
+    // const data = getData();
+    // console.log('received data', data);
+    // if (data) setWData(data);
   }, [setWData, zipCode]);
 
   return (
     <React.Fragment>
-      { error ? JSON.stringify(error) : '' }
-      <Forecast {...{wData, defaultZipcode, defaultIconId}}></Forecast>
-      <hr/>
-      <Form {...{handleSubmit, defaultZipcode, handleZipcodeChange, buttonText}}></Form>
+      <div className="app">
+        { error ? JSON.stringify(error) : '' }
+        <Forecast {...{wData, defaultZipcode, defaultIconId}}></Forecast>
+        <hr/>
+        <Form {...{handleSubmit, defaultZipcode, handleZipcodeChange, inputText, buttonText}}></Form>
+      </div>
     </React.Fragment>
   );
 }
