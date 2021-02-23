@@ -3,7 +3,7 @@ import '../Styles/App.scss';
 import * as defaultData from '../weather';
 
 import { Forecast, Form } from '../Components';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 const weatherAPI = 'https://api.openweathermap.org/data/2.5/weather?zip=';
 const weatherCreds = ',us&appid=709847967f5e54b97308c1b2cae4dee5'
@@ -20,12 +20,16 @@ const App = () => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     console.log('handleSubmit');
+    const { target } = evt;
+    if (target && target.value) {
+      setZipCode(target.value);
+    }
   }
 
-  const handleZipcodeChange = (evt) => {
+  const handleInputChange = (evt) => {
     evt.preventDefault();
     const { target } = evt;
-    const newVal = zipCode
+    const newVal = inputText;
     if (target && target.value) {
       if (!isNaN(target.value)) {
         setInputText(newVal);
@@ -35,23 +39,29 @@ const App = () => {
     return false;
   }
 
-  const getData = async () => {
+  const getData = async (zipcode) => {
     return await(
-      fetch(weatherAPI + zipCode + weatherCreds)
+      fetch(weatherAPI + zipcode + weatherCreds)
       .then(result => {
-        if (result.ok) return JSON.stringify(result);
-        throw new Error('Network response was not ok.');
+        if (result.ok) {
+          return JSON.stringify(result);
+        } else {
+          throw new Error('Network response was not ok.');
+        }
       })
-      .catch((e) => setError(e))
+      .catch((e) => setError({message: e.message}))
     );
   }
+
+
   useEffect(() => {
-    // getData()
-    // Update the document title using the browser API
-    // const data = getData();
-    // console.log('received data', data);
-    // if (data) setWData(data);
-  }, [setWData, zipCode]);
+    getData(zipCode);
+  }, [zipCode])
+
+  useCallback(() => {
+    const data = getData(zipCode);
+    if (data !== wData) setWData(data);
+  },[wData, zipCode]);
 
   return (
     <React.Fragment>
@@ -59,7 +69,7 @@ const App = () => {
         { error ? JSON.stringify(error) : '' }
         <Forecast {...{wData, defaultZipcode, defaultIconId}}></Forecast>
         <hr/>
-        <Form {...{handleSubmit, defaultZipcode, handleZipcodeChange, inputText, buttonText}}></Form>
+        <Form {...{handleSubmit, defaultZipcode, handleZipcodeChange: handleInputChange, inputText, buttonText}}></Form>
       </div>
     </React.Fragment>
   );
