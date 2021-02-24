@@ -9,7 +9,7 @@ const Forecast = (props) => {
   const { wData, defaultIconId, } = props;
   const data = wData;
   const main = data && data['main'] ? data['main'] : { temp: '--', temp_min: '--', temp_max: '--'};
-  console.log('data', {data});
+  //console.log('data', {data});
   const name = data && data['name'] ? data['name'] : '--';
   const weather = data && data['main'] ? data['weather'] : {};
   const weatherDescription = weather && weather[0] && weather[0]['main'] ? weather[0]['main'] : '--';
