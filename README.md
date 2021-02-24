@@ -25,7 +25,9 @@ Your JS code should be well organized and logical. A bad implementation would be
 - Initial code cleanup performed using VSCode Extension (nomadjsdev.cra-tasks-after-init)
 - Includes basic Jest tests included with CRA, modified for this app.
 - `/src/Components/index.js` is used to keep 'private' and 'protected' components separate.
-- While developing the calls to the API, a loop was created that overran the quota for the app. I am receiving the error `GET https://api.openweathermap.org/data/2.5/weather?zip=10036,us&appid=709847967f5e54b97308c1b2cae4dee5 429 (Too Many Requests)`
+- --While developing the calls to the API, a loop was created that overran the quota for the app. I am receiving the error `GET https://api.openweathermap.org/data/2.5/weather?zip=10036,us&appid=709847967f5e54b97308c1b2cae4dee5 429 (Too Many Requests)`--
+- The temperature data from the API is off by +200º. I have made an adjustment in the code, but this is a hack.
+
 
 ## Getting Started with Create React App
 
