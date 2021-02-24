@@ -15,7 +15,7 @@ const App = () => {
   const [zipCode, setZipCode] = useState(defaultZipcode);
   const [inputText, setInputText] = useState(defaultZipcode);
   // eslint-disable-next-line no-unused-vars
-  const [wData, setWData] = useState(defaultData)
+  const [wData, setWData] = useState({})
   const [error, setError]= useState(undefined);
   const [loaded, setLoaded] = useState(false);
 
@@ -47,30 +47,28 @@ const App = () => {
     return false;
   },[]);
 
-  const getData = useCallback(async (zipcode) => {
+  const getData = useCallback(async () => {
     return await(
-      fetch(weatherAPI + zipcode + weatherCreds)
+      fetch(weatherAPI + zipCode + weatherCreds)
       .then(result => result.json())
       .then(result => {
-        if (result !== wData)  {
+        if (!!result)  {
           setWData(result);
           setLoaded(true);
         }
       },
-      (error) => {
+      (error) => { // important to catch errors here (onReject)
         setLoaded(true);
         setError(error);
       })
       .catch((e) => setError(`Error:` + e.message))
     );
-  }, [wData])
+  }, [zipCode])
 
 
   useEffect(() => {
-    if (!loaded) {
-      getData(zipCode);
-    }
-  }, [zipCode, loaded, getData])
+    if (!loaded) getData();
+  }, [getData, loaded])
 
   return (
     <React.Fragment>
