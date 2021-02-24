@@ -13,7 +13,7 @@ const Forecast = (props) => {
   const name = data && data['name'] ? data['name'] : '--';
   const weather = data && data['main'] ? data['weather'] : {};
   const weatherDescription = weather && weather[0] && weather[0]['main'] ? weather[0]['main'] : '--';
-  const iconId = weather && weather.icon ? weather.icon : defaultIconId;
+  const iconId = weather && weather[0] && weather[0]['icon'] ? weather[0]['icon'] : defaultIconId;
 
   return (
     <div className="forecast-container">
